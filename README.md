@@ -34,4 +34,12 @@ Encontrarás organizados por carpetas los temas, ejercicios y proyectos que voy 
 - Hibernate ORM
 - HTML, CSS, JavaScript, Bootstrap
 - Angular (v18), React
+
+### 🛠️ Herramientas:
+- IntelliJ IDEA, NetBeans
+- JDK 21
+- MySQL
+- Glassfish 8
+- Maven, Git
+
 ---
