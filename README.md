@@ -19,3 +19,19 @@ Encontrarás organizados por carpetas los temas, ejercicios y proyectos que voy 
 - ✅ Aplicaciones Fullstack con Angular y React
 - ✅ Desarrollo empresarial con Jakarta EE (Java EE), EJB, JPA, REST, Seguridad, etc.
 - ✅ Uso de herramientas modernas como IntelliJ IDEA, MySQL, Hibernate, Spring Boot, Bootstrap 5
+
+
+---
+
+## 🧱 Tecnologías y herramientas que estoy aprendiendo
+
+### ☕ Java y más:
+- Java SE (Fundamentos, POO, Colecciones, Streams)
+- Java FX, Swing
+- Java Web: JSP, Servlets, JSF, PrimeFaces
+- Jakarta EE: EJB, JPA, JAX-RS, Seguridad
+- Spring Framework y Spring Boot
+- Hibernate ORM
+- HTML, CSS, JavaScript, Bootstrap
+- Angular (v18), React
+---
