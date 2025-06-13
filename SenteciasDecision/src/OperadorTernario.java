@@ -14,5 +14,10 @@ public class OperadorTernario {
         var edad = 17;
         var mensaje = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad";
         System.out.println("Tienes " + edad + ", " + mensaje);
+
+        // Valor positivi, negativo o cero (operador ternario anidado)
+        numero = 10;
+        resultado = (numero > 0) ? "Positivo" : (numero < 0) ? "Negativo" : "Cero";
+        System.out.println("El valor es " + resultado);
     }
 }
