@@ -10,6 +10,9 @@ public class OperadorTernario {
         var resultado = (numero % 2 == 0) ? "Par" : "Impar";
         System.out.println("El número " + numero + " es " + resultado);
 
-
+        // Calcular si es mayor de edad
+        var edad = 17;
+        var mensaje = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad";
+        System.out.println("Tienes " + edad + ", " + mensaje);
     }
 }
