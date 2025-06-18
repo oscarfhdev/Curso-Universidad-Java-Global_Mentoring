@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Arreglos {
     public static void main(String[] args) {
@@ -34,5 +35,31 @@ public class Arreglos {
 
         // Imprimir el arreglo, nos muestra la dirección de memoria
         System.out.println("Imprimir el arreglo: " + nuevoArreglo);
+
+        // Iterar los elementos de un arreglo
+        for (var i = 0; i < nuevoArreglo.length; i++)
+            System.out.println("Valor del índice " + i + " = " + nuevoArreglo[i]);
+
+        // Introducir valores a un arreglo
+        var consola = new Scanner(System.in);
+
+        // Declarar el arreglo
+        System.out.print("\nProporciona el largo del arreglo: ");
+        var largoArreglo = Integer.parseInt(consola.nextLine());
+
+        // Creamos de manera dinámica el arreglo
+        var enteros3 = new int[largoArreglo];
+
+        // Solicitar los valores del arreglo
+        for (var i = 0; i < largoArreglo; i++){
+            System.out.print("Proporciona enteros [" + i + "] = " );
+            enteros3[i] = Integer.parseInt(consola.nextLine());
+        }
+
+        // Imprimir los valores del arreglo
+        System.out.println("\nImpresión del arreglo");
+        for (int i = 0; i < largoArreglo; i++) {
+            System.out.println("Valor del índice " + i + " = " + enteros3[i]);
+        }
     }
 }
