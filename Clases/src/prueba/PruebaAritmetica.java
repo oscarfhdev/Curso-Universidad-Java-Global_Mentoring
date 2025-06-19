@@ -6,8 +6,9 @@ public class PruebaAritmetica {
     public static void main(String[] args) {
         System.out.println("*** Ejemplo Aritmetica ***");
         var aritmetica1 = new Aritmetica();
-        aritmetica1.operando1 = 5;
-        aritmetica1.operando2 = 7;
+        aritmetica1.setOperando1(5);
+        System.out.println("Atributo operando1: " + aritmetica1.getOperando1());
+        aritmetica1.setOperando2(7);
         aritmetica1.sumar();
         aritmetica1.restar();
 
