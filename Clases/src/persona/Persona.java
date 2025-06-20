@@ -2,19 +2,24 @@ package persona;
 
 public class Persona{
     static int contadorPersonas;
+    private int idPersona;
     private String nombre;
     private String apellido;
 
     public Persona(String nombre, String apellido){
         this.nombre = nombre;
         this.apellido = apellido;
-        Persona.contadorPersonas++;
+        // Incrementar el atributo static
+        this.idPersona = ++Persona.contadorPersonas;
     }
 
     public Persona(){
         Persona.contadorPersonas++;
     }
 
+    public int getIdPersona(){
+        return this.idPersona;
+    }
     public String getNombre(){
         return this.nombre;
     }
@@ -40,6 +45,6 @@ public class Persona{
     // Si no sobreescribimos el método nos muestra la dirección d memoria del objeto
     @Override
     public String toString(){
-        return "Nombre: " + this.nombre + "Apellido : " + this.apellido + "\nMétodo toString de la clase Object " + super.toString();
+        return "Id: " + idPersona + ", Nombre: " + this.nombre + ", Apellido: " + this.apellido + "\nMétodo toString de la clase Object " + super.toString();
     }
 }

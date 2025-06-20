@@ -9,6 +9,8 @@ public class PruebaPersona {
         objeto1.setApellido("Acosta");
 
         objeto1.mostrarPersona();
+        System.out.println();
+        System.out.println(objeto1);
 
         // Segundo objeto
         System.out.println();
