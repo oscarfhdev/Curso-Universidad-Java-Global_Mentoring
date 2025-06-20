@@ -33,4 +33,10 @@ public class Persona{
         System.out.println("Nombre = " + this.nombre);
         System.out.println("Apellido: " + this.apellido);
     }
+
+    // Si no sobreescribimos el método nos muestra la dirección d memoria del objeto
+    @Override
+    public String toString(){
+        return "Nombre: " + this.nombre + "Apellido : " + this.apellido + "\nMétodo toString de la clase Object " + super.toString();
+    }
 }

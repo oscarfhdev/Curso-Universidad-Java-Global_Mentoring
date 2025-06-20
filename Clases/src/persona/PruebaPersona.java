@@ -15,5 +15,9 @@ public class PruebaPersona {
         var objeto2 = new Persona("Ian", "Gómez");
         objeto2.mostrarPersona();
 
+        System.out.println();
+        // Utilizamos el método toString
+        //System.out.println(objeto2.toString());
+        System.out.println(objeto2); // Automáticamente llama a toString()
     }
 }
