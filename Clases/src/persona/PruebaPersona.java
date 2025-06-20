@@ -19,5 +19,8 @@ public class PruebaPersona {
         // Utilizamos el método toString
         //System.out.println(objeto2.toString());
         System.out.println(objeto2); // Automáticamente llama a toString()
+
+        // Imprimimos el valor de la variable estática
+        System.out.println("Valor de la variable estática:" + Persona.contadorPersonas);
     }
 }

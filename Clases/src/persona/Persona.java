@@ -1,15 +1,18 @@
 package persona;
 
 public class Persona{
+    static int contadorPersonas;
     private String nombre;
     private String apellido;
 
     public Persona(String nombre, String apellido){
         this.nombre = nombre;
         this.apellido = apellido;
+        Persona.contadorPersonas++;
     }
 
     public Persona(){
+        Persona.contadorPersonas++;
     }
 
     public String getNombre(){
