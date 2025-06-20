@@ -23,6 +23,9 @@ public class PruebaPersona {
         System.out.println(objeto2); // Automáticamente llama a toString()
 
         // Imprimimos el valor de la variable estática
-        System.out.println("Valor de la variable estática:" + Persona.contadorPersonas);
+        System.out.println("Valor de la variable estática:" + Persona.getContadorPersonas());
+
+        var objeto3 = new Persona();
+        System.out.println("Valor de la variable estática:" + objeto2.getContadorPersonas()); // No es conveniente acceder a información estático mediante objetod dinámicos
     }
 }
