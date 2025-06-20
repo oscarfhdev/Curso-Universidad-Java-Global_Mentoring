@@ -1,7 +1,7 @@
 package persona;
 
 public class Persona{
-    static int contadorPersonas;
+    private static int contadorPersonas;
     private int idPersona;
     private String nombre;
     private String apellido;
@@ -40,6 +40,10 @@ public class Persona{
         var variableLocal = "Valor1";
         System.out.println("Nombre = " + this.nombre);
         System.out.println("Apellido: " + this.apellido);
+    }
+
+    public static int getContadorPersonas(){
+        return Persona.contadorPersonas;
     }
 
     // Si no sobreescribimos el método nos muestra la dirección d memoria del objeto
