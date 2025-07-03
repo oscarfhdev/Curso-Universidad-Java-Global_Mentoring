@@ -1,0 +1,5 @@
+primeras
+líneas
+del
+archivo
+hola que tal
