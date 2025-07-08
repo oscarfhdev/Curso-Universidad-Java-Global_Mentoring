@@ -49,11 +49,58 @@ public class ClienteDAO implements IClienteDAO{
 
     @Override
     public boolean buscarClientePorId(Cliente cliente) {
+        PreparedStatement ps;
+        ResultSet rs;
+        var con = getConexion();
+        var sql = "SELECT * FROM cliente WHERE id = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getId());
+            rs = ps.executeQuery();
+            if (rs.next()){
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setMembresia(rs.getInt("membresia"));
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println("Error al recuperar el cliente por id: " + e.getMessage());
+        }
+        finally {
+            try {
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
         return false;
     }
 
     @Override
     public boolean agregarCliente(Cliente cliente) {
+        PreparedStatement ps;
+        Connection con = getConexion();
+        String sql = "INSERT INTO cliente(nombre, apellido, membresia)" + " VALUES(?, ?, ?)";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setInt(3, cliente.getMembresia());
+            ps.execute();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println("Error al agregar al cliente: " + e.getMessage());
+        }
+        finally {
+            try {
+                con.close();
+            }
+            catch (Exception e){
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+
         return false;
     }
 
@@ -68,11 +115,32 @@ public class ClienteDAO implements IClienteDAO{
     }
 
     public static void main(String[] args) {
+        var clienteDAO = new ClienteDAO();
+
+        // Buscar por id
+//        var cliente1 = new Cliente(2);
+//        System.out.println("Cliente antes de la búsqueda: " + cliente1);
+//        var encontrado = clienteDAO.buscarClientePorId(cliente1);
+//        if(encontrado){
+//            System.out.println("Cliente encontrado: " + cliente1);
+//        }
+//        else {
+//            System.out.println("No se encontró el cliente: " + cliente1.getId());
+//        }
+
+        // Agregar cliente
+        var nuevoCliente = new Cliente("Daniel", "Ortiz", 300);
+        var agregado = clienteDAO.agregarCliente(nuevoCliente);
+        if(agregado){
+            System.out.println("Cliente agregado: " + nuevoCliente);
+        }
+        else {
+            System.out.println("No se agregó el cliente: " + nuevoCliente);
+        }
+
         // Listar clientes
         System.out.println("*** Listar Clientes ***");
-        var clienteDAO = new ClienteDAO();
         var clientes = clienteDAO.listarClientes();
         clientes.forEach(System.out::println);
-
     }
 }
