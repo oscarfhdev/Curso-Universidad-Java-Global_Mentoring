@@ -193,18 +193,18 @@ public class ClienteDAO implements IClienteDAO{
 //        }
 
         // Eliminar cliente
-        var clienteEliminar = new Cliente(4);
-        var eliminado = clienteDAO.eliminarCliente(clienteEliminar);
-        if (eliminado){
-            System.out.println("Cliente eliminado correctamente" + clienteEliminar);
-        }
-        else {
-            System.out.println("El cliente no se pudo eliminar" + clienteEliminar);
-        }
+//        var clienteEliminar = new Cliente(4);
+//        var eliminado = clienteDAO.eliminarCliente(clienteEliminar);
+//        if (eliminado){
+//            System.out.println("Cliente eliminado correctamente" + clienteEliminar);
+//        }
+//        else {
+//            System.out.println("El cliente no se pudo eliminar" + clienteEliminar);
+//        }
 
         // Listar clientes
-        System.out.println("*** Lista de Clientes ***");
-        var clientes = clienteDAO.listarClientes();
-        clientes.forEach(System.out::println);
+//        System.out.println("*** Lista de Clientes ***");
+//        var clientes = clienteDAO.listarClientes();
+//        clientes.forEach(System.out::println);
     }
 }
