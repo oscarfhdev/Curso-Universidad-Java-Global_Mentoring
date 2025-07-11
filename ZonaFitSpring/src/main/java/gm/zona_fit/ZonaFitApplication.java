@@ -1,7 +1,6 @@
 package gm.zona_fit;
 
 import gm.zona_fit.modelo.Cliente;
-import gm.zona_fit.servicio.ClienteServicio;
 import gm.zona_fit.servicio.IClienteServicio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +18,8 @@ public class ZonaFitApplication implements CommandLineRunner{
 
 	private static final Logger logger = LoggerFactory.getLogger(ZonaFitApplication.class);
 
+	String nl = System.lineSeparator();
+
 	public static void main(String[] args) {
 		logger.info("Iniciando la aplicación");
 
@@ -30,7 +31,7 @@ public class ZonaFitApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("*** Aplicación ZonaFit (GYM) ***");
+		logger.info(nl + nl + "*** Aplicación ZonaFit (GYM) ***" + nl);
 
 		var salir = false;
 		var consola = new Scanner(System.in);
@@ -39,24 +40,25 @@ public class ZonaFitApplication implements CommandLineRunner{
 			try {
 				var opcion = mostrarmenu(consola);
 				salir = ejecutarOpciones(opcion, consola);
+				logger.info(nl);
 			}
 			catch (Exception e){
-				logger.info("Ocurrió un error: " + e.getMessage());
+				logger.info("Ocurrió un error: " + e.getMessage() + nl);
 			}
 		}
 
 	}
 
 	private Integer mostrarmenu(Scanner consola){
-		System.out.print("""
-				\nMenú:
-				1. Listar clientes
-				2. Buscar cliente
-				3. Agregar cliente
-				4. Modificar cliente
-				5. Eliminar cliente
-				6. Salir
-				Escoge una opción:\s""");
+		logger.info("""
+		\nMenú:
+		1. Listar clientes
+		2. Buscar cliente
+		3. Agregar cliente
+		4. Modificar cliente
+		5. Eliminar cliente
+		6. Salir
+		Escoge una opción:\s""");
 		return Integer.parseInt(consola.nextLine());
 	}
 
@@ -68,82 +70,85 @@ public class ZonaFitApplication implements CommandLineRunner{
 			case 4 -> actualizarCliente(consola);
 			case 5 -> eliminarCliente(consola);
 			case 6 -> {
-				logger.info("Saliendo del sistema...");
+				logger.info("Saliendo del sistema..." + nl + nl);
 				return true;
 			}
+			default -> logger.info("Opción no reconocida: " + opcion);
 		}
 		return false;
 	}
 
 	private void listarClientes(){
-		System.out.println("--- Listar clientes ---");
-		clienteServicio.listarClientes().forEach(System.out::println);
+		logger.info(nl + "--- Listar clientes ---" + nl);
+		clienteServicio.listarClientes().forEach(cliente -> logger.info(cliente.toString() + nl));
 	}
 
 	private void buscarCliente(Scanner consola){
-		System.out.println("--- Buscar cliente ---");
-		System.out.print("Ingresa el id del cliente que deseas buscar: ");
+		logger.info(nl + "--- Buscar cliente ---" + nl);
+		logger.info("Ingresa el id del cliente que deseas buscar: ");
 		var idABuscar = Integer.parseInt(consola.nextLine());
 
 		var clienteEncontrado = clienteServicio.buscarClientePorId(idABuscar);
 
 		if (clienteEncontrado != null){
-			System.out.println("Cliente encontrado correctamente: " + clienteEncontrado);
+			logger.info("Cliente encontrado correctamente: " + clienteEncontrado + nl);
 		}
 		else {
-			System.out.println("No se ha encontrado ningún cliente con id: " + idABuscar);
+			logger.info("No se ha encontrado ningún cliente con id: " + idABuscar + nl);
 		}
 	}
 
 	private void agregarCliente(Scanner consola){
-		System.out.print("Ingrese el nombre del nuevo cliente: ");
+		logger.info(nl + "--- Agregar cliente ---" + nl);
+		logger.info("Ingrese el nombre del nuevo cliente: ");
 		var nombre = consola.nextLine();
-		System.out.print("Ingrese el apellido del nuevo cliente: ");
+		logger.info("Ingrese el apellido del nuevo cliente: ");
 		var apelido = consola.nextLine();
-		System.out.print("Ingrese la membresía del nuevo cliente: ");
+		logger.info("Ingrese la membresía del nuevo cliente: ");
 		var membresia = Integer.parseInt(consola.nextLine());
 
 		var clienteAAgregar = new Cliente(null, nombre, apelido, membresia);
 
 		clienteServicio.guardarCliente(clienteAAgregar);
-		System.out.println("Cliente agregado corectamente: " + clienteAAgregar);
+		logger.info("Cliente agregado corectamente: " + clienteAAgregar+ nl);
 	}
 
 	private void actualizarCliente(Scanner consola){
-		System.out.println("--- Actualizar cliente ---");
-		System.out.print("Ingresa el id del cliente a actualizar: ");
+		logger.info(nl + "--- Actualizar cliente ---" + nl);
+		logger.info("Ingresa el id del cliente a actualizar: ");
 		var idCliente = Integer.parseInt(consola.nextLine());
 
 		if (clienteServicio.buscarClientePorId(idCliente) != null){
-			System.out.print("Ingrese el nombre del cliente: ");
+			logger.info("Ingrese el nombre del cliente: ");
 			var nombre = consola.nextLine();
-			System.out.print("Ingrese el apellido del cliente: ");
+			logger.info("Ingrese el apellido del cliente: ");
 			var apelido = consola.nextLine();
-			System.out.print("Ingrese la membresía del cliente: ");
+			logger.info("Ingrese la membresía del cliente: ");
 			var membresia = Integer.parseInt(consola.nextLine());
 
-			clienteServicio.guardarCliente(new Cliente(idCliente, nombre, apelido, membresia));
-			System.out.println("Cliente actualizado correctamente");
+			var clienteActualizado = new Cliente(idCliente, nombre, apelido, membresia);
+			clienteServicio.guardarCliente(clienteActualizado);
+			logger.info("Cliente actualizado correctamente" + clienteActualizado +  nl);
 		}
 		else {
-			System.out.println("No se ha encontrado ningún cliente con id: " + idCliente);
+			logger.info("No se ha encontrado ningún cliente con id: " + idCliente + nl);
 		}
 
 
 	}
 
 	private void eliminarCliente(Scanner consola){
-		System.out.println("--- Eliminar cliente ---");
-		System.out.print("Ingresa el id del cliente a eliminar: ");
+		logger.info(nl + "--- Eliminar cliente ---" + nl);
+		logger.info("Ingresa el id del cliente a eliminar: ");
 		var idCliente = Integer.parseInt(consola.nextLine());
 
 		var clienteABuscar = clienteServicio.buscarClientePorId(idCliente);
-		if ( clienteABuscar != null){
+		if (clienteABuscar != null){
 			clienteServicio.eliminarCliente(clienteABuscar);
-			System.out.println("Cliente eliminado correctamente");
+			logger.info("Cliente eliminado correctamente" + nl);
 		}
 		else {
-			System.out.println("No se ha encontrado ningún cliente con esta id: " + idCliente);
+			logger.info("No se ha encontrado ningún cliente con esta id: " + idCliente + nl);
 		}
 	}
 }
