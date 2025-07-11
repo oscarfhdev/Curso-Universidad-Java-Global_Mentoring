@@ -1,3 +1,5 @@
+import com.formdev.flatlaf.FlatDarculaLaf;
+
 import javax.swing.*;
 
 public class Forma extends JFrame{
@@ -11,10 +13,11 @@ public class Forma extends JFrame{
         setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // Centramos la ventana
     }
 
     public static void main(String[] args) {
+        FlatDarculaLaf.setup();
         Forma forma = new Forma();
         forma.setVisible(true);
     }
