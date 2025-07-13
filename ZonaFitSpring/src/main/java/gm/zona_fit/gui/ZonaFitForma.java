@@ -12,8 +12,14 @@ import javax.swing.table.DefaultTableModel;
 public class ZonaFitForma extends JFrame {
     private JPanel panelPrincipal;
     private JTable clientesTabla;
-    private DefaultTableModel tablaModeloCientes;
+    private JTextField nombreTexto;
+    private JTextField apellidoTexto;
+    private JTextField membresiaTexto;
+    private JButton guardarButton;
+    private JButton eliminarButton;
+    private JButton limpiarButton;
 
+    private DefaultTableModel tablaModeloCientes;
     IClienteServicio clienteServicio;
 
     @Autowired
