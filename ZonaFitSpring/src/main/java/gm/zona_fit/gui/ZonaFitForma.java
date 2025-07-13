@@ -40,6 +40,7 @@ public class ZonaFitForma extends JFrame {
         eliminarButton.addContainerListener(new ContainerAdapter() {
         });
         eliminarButton.addActionListener(e -> eliminarCliente());
+        limpiarButton.addActionListener(e -> limpiarFormulario());
     }
 
     private void iniciarForma(){
@@ -52,11 +53,22 @@ public class ZonaFitForma extends JFrame {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        this.tablaModeloCientes = new DefaultTableModel(0, 4);
+
+        //this.tablaModeloCientes = new DefaultTableModel(0, 4);
+        this.tablaModeloCientes = new DefaultTableModel(0,4){
+            @Override
+            // Sobreescribimos este método para denegar la edición directa de las celdas
+            public boolean isCellEditable(int row, int colum){
+                return false;
+            }
+        };
+
         String[] cabeceros = {"Id", "Nombre", "Apellido", "Membresía"};
         this.tablaModeloCientes.setColumnIdentifiers(cabeceros);
         this.clientesTabla = new JTable(tablaModeloCientes);
 
+        // Restringimos la selección de la tabla a un solo registro
+        this.clientesTabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // Cargar listado de clientes
         listarClientes();
     }
@@ -107,14 +119,14 @@ public class ZonaFitForma extends JFrame {
             mostrarMensaje("No hay ningún cliente seleccionado para eliminar");
             return;
         }
-        var clienteEliminar = new Cliente();
-        clienteEliminar.setId(this.idCliente);
-        clienteEliminar.setNombre(this.nombreTexto.getText());
-        clienteEliminar.setApellido(this.apellidoTexto.getText());
-        clienteEliminar.setMembresia(Integer.parseInt(this.membresiaTexto.getText()));
-
-        clienteServicio.eliminarCliente(clienteEliminar);
-        mostrarMensaje("Cliente eliminado correctamente");
+        var clienteEliminar = clienteServicio.buscarClientePorId(this.idCliente);
+        if (clienteEliminar == null){
+            mostrarMensaje("No hay ningún cliente seleccionado");
+        }
+        else {
+            clienteServicio.eliminarCliente(clienteEliminar);
+            mostrarMensaje("Cliente eliminado correctamente");
+        }
         limpiarFormulario();
         listarClientes();
     }
