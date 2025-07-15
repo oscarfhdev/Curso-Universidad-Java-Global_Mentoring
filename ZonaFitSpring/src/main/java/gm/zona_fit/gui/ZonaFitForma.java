@@ -3,7 +3,6 @@ package gm.zona_fit.gui;
 import gm.zona_fit.modelo.Cliente;
 import gm.zona_fit.servicio.ClienteServicio;
 import gm.zona_fit.servicio.IClienteServicio;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.swing.*;
@@ -11,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 
 
-@Component
+//@Component
 public class ZonaFitForma extends JFrame {
     private JPanel panelPrincipal;
     private JTable clientesTabla;
