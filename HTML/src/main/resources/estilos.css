@@ -1,0 +1,23 @@
+/* Definición de los estilos CSS */
+body{
+    background-color: black;
+    color: white;
+}
+
+/* Estilos para los links */
+a{
+    color: hotpink;
+}
+
+a:hover{
+    color: yellow
+}
+
+/* Clases - Selectores */
+.texto-centrado{
+    text-align: center;
+}
+
+.titulo{
+    font-size:200%;
+}
