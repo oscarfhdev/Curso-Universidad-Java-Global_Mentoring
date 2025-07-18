@@ -3,8 +3,11 @@ package gm.zona_fit.controlador;
 import gm.zona_fit.modelo.Cliente;
 import gm.zona_fit.servicio.IClienteServicio;
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import lombok.Data;
+import org.primefaces.PrimeFaces;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +23,7 @@ public class IndexControlador {
     IClienteServicio clienteServicio;
     private List<Cliente> clientes;
     private static final Logger logger = LoggerFactory.getLogger(IndexControlador.class);
+    private Cliente clienteSeleccionado;
 
     @PostConstruct
     public void init(){
@@ -29,5 +33,28 @@ public class IndexControlador {
     public void cargarDatos(){
         this.clientes = this.clienteServicio.listarClientes();
         this.clientes.forEach(cliente -> logger.info(cliente.toString()));
+    }
+
+    public void agregarCliente(){
+        this.clienteSeleccionado = new Cliente();
+    }
+
+    public void guardarCliente(){
+        logger.info("Cliente a guardar: " + this.clienteSeleccionado);
+        // Agregamos el cliente
+        if(this.clienteSeleccionado.getId() == null){
+            this.clienteServicio.guardarCliente(this.clienteSeleccionado);
+            this.clientes.add(this.clienteSeleccionado);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente Agregado Correctamente"));
+        }
+
+        // Ocultamos la ventana modal
+        PrimeFaces.current().executeScript("PF('ventanaModalCliente').hide()");
+
+        // Actualizamos la tabla usando AJAX
+        PrimeFaces.current().ajax().update("forma-clientes:mensajes", "forma-clientes:clientes-tabla");
+
+        // Reseteamos el objeto de clienteSeleccionado
+        this.clienteSeleccionado = null;
     }
 }
