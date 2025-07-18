@@ -41,13 +41,19 @@ public class IndexControlador {
 
     public void guardarCliente(){
         logger.info("Cliente a guardar: " + this.clienteSeleccionado);
-        // Agregamos el cliente
+        // Caso Agregar el cliente
         if(this.clienteSeleccionado.getId() == null){
             this.clienteServicio.guardarCliente(this.clienteSeleccionado);
             this.clientes.add(this.clienteSeleccionado);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente Agregado Correctamente"));
         }
 
+        //Caso Modificar el cliente
+        else {
+            this.clienteServicio.guardarCliente(clienteSeleccionado);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente Modificado Correctamente"));
+
+        }
         // Ocultamos la ventana modal
         PrimeFaces.current().executeScript("PF('ventanaModalCliente').hide()");
 
