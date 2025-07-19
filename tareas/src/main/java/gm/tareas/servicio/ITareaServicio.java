@@ -1,4 +1,4 @@
-package gm.tareas.repositorio;
+package gm.tareas.servicio;
 
 import gm.tareas.modelo.Tarea;
 
