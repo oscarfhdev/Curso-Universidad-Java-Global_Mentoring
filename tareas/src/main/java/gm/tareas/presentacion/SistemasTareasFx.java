@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
 
-public class SistemaTareasFx extends Application {
+public class SistemasTareasFx extends Application {
 
     private ConfigurableApplicationContext applicationContext;
 
@@ -21,21 +21,24 @@ public class SistemaTareasFx extends Application {
 
     @Override
     public void init(){
-        this.applicationContext = new SpringApplicationBuilder(TareasApplication.class).run();
+        this.applicationContext =
+                new SpringApplicationBuilder(TareasApplication.class).run();
     }
-
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(TareasApplication.class.getResource("/templates/index.fxml"));
+        FXMLLoader loader =
+                new FXMLLoader(TareasApplication.class.getResource("/templates/index.fxml"));
         loader.setControllerFactory(applicationContext::getBean);
         Scene escena = new Scene(loader.load());
         stage.setScene(escena);
         stage.show();
     }
+
     @Override
     public void stop(){
-        applicationContext.stop();
+        applicationContext.close();
         Platform.exit();
     }
+
 }
