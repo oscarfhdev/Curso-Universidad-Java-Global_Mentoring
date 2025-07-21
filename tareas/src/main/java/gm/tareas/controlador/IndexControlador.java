@@ -4,6 +4,7 @@ import gm.tareas.modelo.Tarea;
 import gm.tareas.servicio.TareaServicio;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,6 +40,17 @@ public class IndexControlador implements Initializable {
 
     private final ObservableList<Tarea> tareaList = FXCollections.observableArrayList();
 
+    private Integer idTareaInterno;
+
+    @FXML
+    private TextField nombreTareaTexto;
+
+    @FXML
+    private TextField responsableTexto;
+
+    @FXML
+    private TextField estatusTexto;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tareaTabla.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -57,4 +69,45 @@ public class IndexControlador implements Initializable {
         tareaList.addAll(tareaServicio.listarTareas());
         tareaTabla.setItems(tareaList);
      }
+
+    public void agregarTarea(ActionEvent actionEvent) {
+        if(nombreTareaTexto.getText().isEmpty()){
+            mostrarMensaje("Error de Validación", "Debe proporcionar una tarea");
+            nombreTareaTexto.requestFocus();
+            return;
+        }
+        else{
+            var tarea = new Tarea();
+            recolectarDatosFormulario(tarea);
+        }
+    }
+
+    private void recolectarDatosFormulario(Tarea tarea){
+        tarea.setNombreTarea(nombreTareaColumna.getText());
+        tarea.setResponsable(responsableTexto.getText());
+        tarea.setEstatus(estatusTexto.getText());
+        tareaServicio.guardarTarea(tarea);
+        mostrarMensaje("Información", "Tarea agregada correctamente");
+        listarTareas();
+    }
+
+    private void mostrarMensaje(String titulo, String mensaje){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
+    @FXML
+    private void cargarTareaFormulario(){
+        var tarea = tareaTabla.getSelectionModel().getSelectedItem();
+        if(tarea != null){
+            idTareaInterno = tarea.getIdTarea();
+            nombreTareaTexto.setText(tarea.getNombreTarea());
+            responsableTexto.setText(tarea.getResponsable());
+            estatusTexto.setText(tarea.getEstatus());
+        }
+    }
+
 }
