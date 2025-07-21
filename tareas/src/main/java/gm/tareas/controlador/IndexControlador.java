@@ -70,25 +70,29 @@ public class IndexControlador implements Initializable {
         tareaTabla.setItems(tareaList);
      }
 
-    public void agregarTarea(ActionEvent actionEvent) {
+    public void agregarTarea() {
         if(nombreTareaTexto.getText().isEmpty()){
             mostrarMensaje("Error de Validación", "Debe proporcionar una tarea");
             nombreTareaTexto.requestFocus();
-            return;
         }
         else{
             var tarea = new Tarea();
             recolectarDatosFormulario(tarea);
+            tarea.setIdTarea(null);
+            tareaServicio.guardarTarea(tarea);
+            mostrarMensaje("Información", "Tarea agregada correctamente");
+            limpiarFormulario();
+            listarTareas();
         }
     }
 
     private void recolectarDatosFormulario(Tarea tarea){
-        tarea.setNombreTarea(nombreTareaColumna.getText());
+        if (idTareaInterno != null){
+            tarea.setIdTarea(idTareaInterno);
+        }
+        tarea.setNombreTarea(nombreTareaTexto.getText());
         tarea.setResponsable(responsableTexto.getText());
         tarea.setEstatus(estatusTexto.getText());
-        tareaServicio.guardarTarea(tarea);
-        mostrarMensaje("Información", "Tarea agregada correctamente");
-        listarTareas();
     }
 
     private void mostrarMensaje(String titulo, String mensaje){
@@ -108,6 +112,32 @@ public class IndexControlador implements Initializable {
             responsableTexto.setText(tarea.getResponsable());
             estatusTexto.setText(tarea.getEstatus());
         }
+    }
+
+    @FXML
+    private void modificarTarea(){
+        if (idTareaInterno == null){
+            mostrarMensaje("Información", "Debe seleccionar una tarea");
+            return;
+        }
+        if (nombreTareaTexto.getText().isEmpty()){
+            mostrarMensaje("Error validación", "Debe de proporcionarse una tarea");
+            nombreTareaTexto.requestFocus();
+            return;
+        }
+        var tarea = new Tarea();
+        recolectarDatosFormulario(tarea);
+        tareaServicio.guardarTarea(tarea);
+        mostrarMensaje("Información", "Tarea modificada correctamente");
+        limpiarFormulario();
+        listarTareas();
+    }
+
+    private void limpiarFormulario(){
+        nombreTareaTexto.clear();
+        responsableTexto.clear();
+        estatusTexto.clear();
+        idTareaInterno = null;
     }
 
 }
