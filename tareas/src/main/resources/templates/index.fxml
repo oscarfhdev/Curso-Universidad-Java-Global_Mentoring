@@ -48,8 +48,8 @@
          <children>
             <Button fx:id="agregarBoton" layoutX="24.0" layoutY="5.0" mnemonicParsing="false" onAction="#agregarTarea" style="-fx-background-color: #1d3557;" text="Agregar" textFill="#f1faee" />
             <Button fx:id="modificarBoton" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#modificarTarea" style="-fx-background-color: #1f3557;" text="Modificar" textFill="#f1faee" />
-            <Button fx:id="eliminarBoton" layoutX="304.0" layoutY="5.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: e63946;" text="Eliminar" textFill="#f1faee" />
-            <Button fx:id="limpiarBoton" layoutX="426.0" layoutY="5.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: ffd60A;" text="Limpiar Formulario" />
+            <Button fx:id="eliminarBoton" layoutX="304.0" layoutY="5.0" mnemonicParsing="false" onAction="#eliminarTarea" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: e63946;" text="Eliminar" textFill="#f1faee" />
+            <Button fx:id="limpiarBoton" layoutX="426.0" layoutY="5.0" mnemonicParsing="false" onAction="#limpiarFormulario" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: ffd60A;" text="Limpiar Formulario" />
          </children>
       </AnchorPane>
    </children>

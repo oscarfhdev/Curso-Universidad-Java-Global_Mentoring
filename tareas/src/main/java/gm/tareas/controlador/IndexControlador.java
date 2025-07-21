@@ -133,11 +133,24 @@ public class IndexControlador implements Initializable {
         listarTareas();
     }
 
+    @FXML
+    private void eliminarTarea(){
+        var tarea = tareaTabla.getSelectionModel().getSelectedItem();
+        if (tarea != null){
+            logger.info("Registro a eliminar: " + tarea.toString());
+        }
+        tareaServicio.eliminarTarea(tarea);
+        mostrarMensaje("Información", "Tarea eliminada correctamente, id: " + tarea.getIdTarea());
+        limpiarFormulario();
+        listarTareas();
+    }
+    @FXML
     private void limpiarFormulario(){
         nombreTareaTexto.clear();
         responsableTexto.clear();
         estatusTexto.clear();
         idTareaInterno = null;
+        tareaTabla.getSelectionModel().clearSelection();
     }
 
 }
