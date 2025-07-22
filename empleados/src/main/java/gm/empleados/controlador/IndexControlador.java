@@ -24,7 +24,7 @@ public class IndexControlador {
         List<Empleado> empleados = empleadoServicio.listarEmpleados();
         empleados.forEach((empleado -> logger.info(empleado.toString())));
         // Compartimos el modelo con la vista
-//        modelo.put("empleados", empleados);
-//        return "index"; // index.jsp
+        modelo.put("empleados", empleados);
+        return "index"; // index.jsp
     }
 }
