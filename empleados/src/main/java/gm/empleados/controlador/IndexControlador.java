@@ -56,4 +56,12 @@ public class IndexControlador {
         empleadoServicio.guardarEmpleado(empleado);
         return "redirect:/"; // redirigimos a la ruta de inicio
     }
+
+    @RequestMapping(value = "/eliminar", method = RequestMethod.GET)
+    public String eliminar(@RequestParam int idEmpleado){
+        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(idEmpleado);
+        logger.info("Empleado a eliminar: " + empleado);
+        empleadoServicio.eliminarEmpleado(empleado);
+        return "redirect:/"; // redirigimos a la ruta de inicio
+    }
 }
