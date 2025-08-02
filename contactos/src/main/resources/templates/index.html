@@ -1,32 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sistema de Contactos</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-
+    <head th:replace="~{fragmentos/cabecero::cabecero-seccion(titulo='Inicio')}">
     </head>
 
     <body>
         <!--  Div del menú de navegación -->
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-                            <a class="nav-link" href="/agregar">Agregar Contacto</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <div th:replace="~{fragmentos/navegacion::navegacion-seccion}"/>
 
         <!-- Div para desplegar la tabla -->
         <div class="container">
@@ -54,10 +33,7 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-                crossorigin="anonymous"></script>
+        <div th:replace="~{fragmentos/pie-pagina::pie-pagina-seccion}"/>
     </body>
 </html>
