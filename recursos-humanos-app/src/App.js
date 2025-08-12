@@ -1,8 +1,12 @@
 import ListadoEmpleados from "./empleados/ListadoEmpleados";
+import Navegacion from "./empleados/Navegacion"
 
 function App() {
   return (
-    <ListadoEmpleados/>
+    <div className="container">
+      <Navegacion/>
+      <ListadoEmpleados/>
+    </div>
   );
 }
 
