@@ -1,8 +1,8 @@
+import ListadoEmpleados from "./empleados/ListadoEmpleados";
+
 function App() {
   return (
-    <div>
-      <h3 class="text-center">Sistema de Recursos Humanos</h3>
-    </div>
+    <ListadoEmpleados/>
   );
 }
 
