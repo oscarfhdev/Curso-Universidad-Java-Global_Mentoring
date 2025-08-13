@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 public class HolaMundo {
     public static void main(String[] args) {
         System.out.println("Hola Mundo con Java y NetBeans!");
@@ -23,6 +26,29 @@ public class HolaMundo {
         var _miVariable = 2;
         var $miVariable = 3;
         // var áVariable = 10; no se recomienda, tampoco caracteres especiales (#)
+        
+        
+        var usuario = "Juan";
+        var apellido = "Caro";
+        System.out.println("Concatenación: " + usuario + " " + apellido);
+        var i = 10;
+        var j = 12;
+      
+        System.out.println(i + j);
+        System.out.println(i + j + usuario);
+        System.out.println(usuario + i + j);
+        System.out.println(usuario + (i + j));
+        
+        System.out.println("Nueva línea: \n" + usuario);
+        System.out.println("Tabulador: \t" + usuario);
+        System.out.println("Retroceso: \b" + usuario);
+        System.out.println("Comilla simple: \'" + usuario + "\'");
+        System.out.println("Comilla doble: \"" + usuario + "\"");
+        
+        System.out.print("Escribe tu nombre: ");
+        Scanner consola = new Scanner(System.in);
+        var usuario2 = consola.nextLine();
+        System.out.println("usuario2 = " + usuario2);
         
     }
 }
