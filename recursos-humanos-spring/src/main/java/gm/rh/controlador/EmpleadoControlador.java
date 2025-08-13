@@ -57,4 +57,16 @@ public class EmpleadoControlador {
       empleadoServicio.guardarEmpleado(empleado);
       return ResponseEntity.ok(empleado);
    }
+
+   @DeleteMapping("/empleados/{id}")
+   public ResponseEntity<Map<String, Boolean>> eliminarEmpleado(@PathVariable Integer id){
+      Empleado empleado = empleadoServicio.buscarEmpleadoPorId(id);
+      if (empleado == null)
+         throw new RecursoNoEncontradoExcepcion("No se encontró el empleado con id" + id);
+      empleadoServicio.eliminarEmpleado(empleado);
+      // JSON {"eliminado": "true"}
+      Map<String, Boolean> respuesta = new HashMap<>();
+      respuesta.put("eliminado", true);
+      return ResponseEntity.ok(respuesta);
+   }
 }
