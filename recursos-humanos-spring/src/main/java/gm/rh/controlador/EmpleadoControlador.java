@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("rh-app") // http://localhost:8080/rh-app/
@@ -42,5 +44,17 @@ public class EmpleadoControlador {
       }
       return ResponseEntity.ok(empleado);
 
+   }
+
+   @PutMapping("/empleados/{id}")
+   public ResponseEntity<Empleado> actualizarEmpleado(@RequestBody Empleado empleadoRecibido, @PathVariable Integer id){
+      Empleado empleado = empleadoServicio.buscarEmpleadoPorId(id);
+      if (empleado == null)
+         throw new RecursoNoEncontradoExcepcion("El id recibido no existe: " + id);
+      empleado.setNombre(empleadoRecibido.getNombre());
+      empleado.setDepartamento(empleadoRecibido.getDepartamento());
+      empleado.setSueldo(empleado.getSueldo());
+      empleadoServicio.guardarEmpleado(empleado);
+      return ResponseEntity.ok(empleado);
    }
 }
