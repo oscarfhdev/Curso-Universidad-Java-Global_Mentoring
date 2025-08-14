@@ -25,7 +25,7 @@ public class HolaMundo {
         var miVariable = 1;
         var _miVariable = 2;
         var $miVariable = 3;
-        // var áVariable = 10; no se recomienda, tampoco caracteres especiales (#)
+        // var Variable = 10; no se recomienda, tampoco caracteres especiales (#)
         
         
         var usuario = "Juan";
@@ -46,9 +46,39 @@ public class HolaMundo {
         System.out.println("Comilla doble: \"" + usuario + "\"");
         
         System.out.print("Escribe tu nombre: ");
-        Scanner consola = new Scanner(System.in);
-        var usuario2 = consola.nextLine();
-        System.out.println("usuario2 = " + usuario2);
+//        Scanner consola = new Scanner(System.in);
+//        var usuario2 = consola.nextLine();
+//        System.out.println("usuario2 = " + usuario2);
         
+        
+        // Tipo primitivos: enteros: byte, shot, int, long
+        byte numeroByte = (byte) 129;
+        System.out.println("Valor byte:" + numeroByte);
+        System.out.println("Valor mínimo byte:" + Byte.MIN_VALUE);
+        System.out.println("Valor màximo byte:" + Byte.MAX_VALUE);
+        
+        
+        short numeroShort = (short) 32768;
+        System.out.println("numeroShort:" + numeroShort);
+        System.out.println("Valor mínimo short:" + Short.MIN_VALUE);
+        System.out.println("Valor màximo short:" + Short.MAX_VALUE);
+        
+        int numeroInt = (int) 2147483648L;
+        System.out.println("numeroInt:" + numeroInt);
+        System.out.println("Valor mínimo int:" + Integer.MIN_VALUE);
+        System.out.println("Valor màximo int:" + Integer.MAX_VALUE);
+        
+        long numeroLong = 9223371036854775807L;
+        System.out.println("numeroLong:" + numeroLong);
+        System.out.println("Valor mínimo long:" + Long.MIN_VALUE);
+        System.out.println("Valor màximo long:" + Long.MAX_VALUE);
+        
+        
+        // Tipos primitivos de tipo flotante
+        float numeroFloat = (float) 10.0;
+        System.out.println("numeroFloat = " + numeroFloat);
+        System.out.println("Valor mínimo float:" + Float.MIN_VALUE);
+        System.out.println("Valor màximo float:" + Float.MAX_VALUE);
     }
+
 }
