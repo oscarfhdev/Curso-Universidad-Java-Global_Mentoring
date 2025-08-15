@@ -164,8 +164,158 @@ public class HolaMundo {
         var caracter = "hola".charAt(0);
         System.out.println("caracter = " + caracter);
         
-        System.out.print("Proporciona un carácter: " );
-        caracter = consola.nextLine().charAt(0);
-        System.out.println("caracter = " + caracter);
+//        System.out.print("Proporciona un carácter: " );
+//        caracter = consola.nextLine().charAt(0);
+//        System.out.println("caracter = " + caracter);
+        
+        int a= 3, b=2;
+        var resultado = a + b;
+        System.out.println("Resultado suma = " + resultado);
+        
+        resultado = a - b;
+        System.out.println("Resultado resta = " + resultado);
+
+        resultado = a * b;
+        System.out.println("Resultado multiplicación = " + resultado);
+        
+        var resultado2 = 3 / ((float) b);
+        System.out.println("Resultado división = " + resultado2);
+        
+        
+        if (a % 2 == 0) {
+            System.out.println("El número es par");           
+        }
+        else{
+            System.out.println("El número es impar");
+        }
+        
+        int c = 3, d=2;
+        int e = a + 5 - b;
+        System.out.println("e = " + e);
+        
+        c += 1; // c = c + 1;
+        System.out.println("c = " + c);
+        
+        c += 3; // c= c + 3;
+        System.out.println("c = " + c);
+        
+        c -= 2; // c = c-2;
+        System.out.println("c = " + c);
+        
+        var f = 3;
+        var g = -f;
+        System.out.println("f = " + f);
+        System.out.println("g = " + g);
+        
+        var h = true;
+        var i2 = !h;
+        System.out.println("h = " + h);
+        System.out.println("i2 = " + i2);
+        
+        // incremento y preincremento
+        var j2 = 3;
+        var k = ++j2;
+        System.out.println("j2 = " + j2);
+        System.out.println("k = " + k);
+        
+        var l = 5;
+        var m = l++;
+        System.out.println("l = " + l); //primero se utiliza el valor y después se incrementa
+        System.out.println("m = " + m);
+
+        // decremento
+        var n = 2;
+        var o = --n;
+        System.out.println("n = " + n); // ya está decrementado
+        System.out.println("o = " + o);
+        
+        // postdecremento
+        var p = 4;
+        var q = p--; //primero se usa el valor de la variable y se queda pendiente el decremento
+        System.out.println("p = " + p); // tenia pendiente un decremento
+        System.out.println("q = " + q);
+        
+        var a2 = 3;
+        var b2 = 2;
+        
+        var c2 = (a == b);
+        System.out.println("c2 = " + c2);
+        
+        var d2 = a != b;
+        System.out.println("d2 = " + d2);
+        
+        var cadena = "Hola";
+        var cadena2 = "Adiós";
+        var e2 = cadena == cadena2; //compara las referencias de objeto
+        System.out.println("e = " + e);
+        
+        var f2 = cadena.equals(cadena2);
+        System.out.println("f2 = " + f2);
+        
+        var g2 = a2 > b2;
+        System.out.println("g2 = " + g2);
+        
+        if (a % 2 == 0) {
+            System.out.println("Es número par");
+        }else{
+            System.out.println("Es número impar");
+        }
+        
+        var edad3 = 10;
+        var adulto2 = 18;
+        if (edad3 >= adulto2) {
+            System.out.println("Es un adulto");
+        }
+        else{
+            System.out.println("Es menor de edad");
+        }
+        
+        var a3 = 10;
+        var valorMinimo = 0;
+        var valorMaximo = 10;
+        var resultado3 = a3 >= valorMinimo && a3 <= valorMaximo;
+        System.out.println("resultado3 = " + resultado3);
+        
+        if (resultado3) {
+            System.out.println("Dentro de rango");
+        }
+        else{
+            System.out.println("Fuera de rango");
+        }
+        
+        
+        var vacaciones = false;
+        var diaDescanso = false;
+        
+        if(vacaciones || diaDescanso) {
+            System.out.println("Puedo asistir"); 
+        }
+        else{
+            System.out.println("Estoy ocupado");
+        }
+        
+        
+        // Operador ternario
+        var resultado4 = (1 > 2) ? "verdadero" : "falso";
+        System.out.println("resultado4 = " + resultado4);
+        
+        var numero = 8;
+        resultado4 = (numero % 2 == 0) ? "número par" : "número impar";
+        System.out.println("resultado4 = " + resultado4);
+        
+        
+        // Preferencia de operadores
+        var x2 = 5;
+        var y2 = 10;
+        var z2 = ++x2 + y2--;
+        System.out.println("x2 = " + x2);
+        System.out.println("y2 = " + y2);
+        System.out.println("z2 = " + z2);
+        
+        var resultado5 = 4 + 5 * 6 / 3; //4 + ((5*6)/3)
+        System.out.println("resultado5 = " + resultado5);
+        
+        resultado5 = (4+5) * 6 / 3;
+        System.out.println("resultado5 = " + resultado5);
     }
 }
