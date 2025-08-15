@@ -317,5 +317,106 @@ public class HolaMundo {
         
         resultado5 = (4+5) * 6 / 3;
         System.out.println("resultado5 = " + resultado5);
+        
+        
+        // Condicionales
+        var condicion = true;
+        if (condicion) {
+            System.out.println("Condición verdadera");
+        }
+        else{
+            System.out.println("Condición falsa");
+        }
+        
+        var numero2 = 2;
+        var numeroTexto = "Numero desconocido";
+        
+        if(numero2 == 1){
+            numeroTexto = "Número uno";
+        }
+        else if (numero2 == 2){
+            numeroTexto = "Número dos";
+        }
+        else if (numero2 == 3){
+            numeroTexto = "Número tres";
+        }
+        else if (numero2 == 4){
+            numeroTexto = "Número cuatro";
+        }
+        else{
+            numeroTexto = "Número no encontrado";
+        }
+        
+        System.out.println("numeroTexto = " + numeroTexto);
+        
+        // Operadores lógicos
+        System.out.print("Ingresa el número del mes: (1-12): ");
+//        var mes = Integer.parseInt(consola.nextLine());
+        var estacion = "Estación desconocida";
+        
+//        if (mes == 1 || mes == 2 || mes == 12) {
+//            estacion = "Invierno";
+//        }
+//        else if (mes == 3 || mes == 4 || mes == 5) {
+//            estacion = "Primavera";
+//        }
+//        else if (mes == 6 || mes == 7 || mes == 8) {
+//            estacion = "Verano";
+//        }
+//        else if (mes == 9 || mes == 10 || mes == 11) {
+//            estacion = "Otoño";
+//        }
+        System.out.println("estacion = " + estacion);
+        
+//        var numero3 = Integer.parseInt(consola.nextLine());
+//        var numeroTexto2 = "Valor desconocido";
+//        
+//        switch (numero3) {
+//            case 1:
+//                numeroTexto2 = "Numero uno";                
+//                break;
+//            case 2:
+//                numeroTexto2 = "Numero dos";                
+//                break;
+//            case 3:
+//                numeroTexto2 = "Numero tres";                
+//                break;
+//            case 4:
+//                numeroTexto2 = "Numero cuatro";                
+//                break;
+//            default:
+//                numeroTexto2 = "Caso no encontrado";
+//        }
+//        System.out.println("numeroTexto2 = " + numeroTexto2);
+//        
+        
+        // Bucles
+        var contador = 0;
+        while (contador < 3) {
+            System.out.println("contador = " + contador);
+            contador++;
+        }
+        
+        var contador2 = 0;
+        do {            
+            System.out.println("contador2 = " + contador2);
+            contador2++;
+        } while (contador2 < 3);
+        
+        
+        for (var contador3 = 0; contador3 < 3; contador3++) {
+            if (contador3 % 2 == 0) {
+                System.out.println("contador3 = " + contador3);
+                break;
+            }
+        }
+        
+        inicio: // etiqueta
+        for (var contador4 = 0; contador4 < 3; contador4++) {
+            if (contador4 % 2 != 0) {
+                continue inicio; // Ir a la siguiente iteracion
+            }
+            System.out.println("contador4 = " + contador4);
+        }
     }
 }
