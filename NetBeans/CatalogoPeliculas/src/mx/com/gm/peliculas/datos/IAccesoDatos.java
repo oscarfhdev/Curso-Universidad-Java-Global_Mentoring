@@ -4,7 +4,7 @@ import java.util.List;
 import mx.com.gm.peliculas.domain.Pelicula;
 import mx.com.gm.peliculas.excepciones.*;
 
-public interface AccesoDatos {
+public interface IAccesoDatos {
     boolean existe(String nombreArchivo) throws AccesoDatosEx;
     
    List<Pelicula> listar(String nombreRecurso) throws LecturaDatosEx;
