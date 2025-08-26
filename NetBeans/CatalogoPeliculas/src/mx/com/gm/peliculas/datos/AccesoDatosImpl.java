@@ -46,7 +46,7 @@ public class AccesoDatosImpl implements IAccesoDatos{
             var salida = new PrintWriter(new FileWriter(archivo, anexar));
             salida.println(pelicula.getNombre());
             salida.close();
-            System.out.println("Se ha escrito información al archiov: " + pelicula);
+            System.out.println("Se ha escrito información al archivo: " + pelicula.getNombre());
         } catch (IOException ex) {
             ex.printStackTrace();;
             throw new EscrituraDatosEx("Excepción al listar las películas: " + ex.getMessage());
@@ -64,7 +64,7 @@ public class AccesoDatosImpl implements IAccesoDatos{
             var indice = 1;
             while(linea != null){
                 if (buscar != null && buscar.equalsIgnoreCase(linea)) {
-                    resultado = "Película" + linea + " encontrada en el índice " + indice;
+                    resultado = "Película " + linea + " encontrada en el índice " + indice;
                     break;
                 }
                 linea = entrada.readLine();
