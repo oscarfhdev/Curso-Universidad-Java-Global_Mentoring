@@ -1,49 +1,55 @@
 package test;
 
+import datos.Conexion;
 import datos.PersonaJDBC;
 import domain.Persona;
+import java.sql.*;
 import java.util.List;
 
 public class TestManejoPersonas {
     public static void main(String[] args) {
-        PersonaJDBC personaDAO = new PersonaJDBC();
-        List<Persona> personas = personaDAO.seleccionar();
-//        for (Persona persona : personas) {
-//            System.out.println("persona = " + persona);
-//        }
         
-        
-//        System.out.println("\n\n");
-        // Hacemos la prueba para insertar un nuevo objeto persona
-//        Persona nuevaPersona = new Persona("Carlos", "Esperpento", "carlos@carlos.es", "834928");
-        // personaDAO.insertar(nuevaPersona);
-        
-//        personas = personaDAO.seleccionar();
-//        for (Persona persona : personas) {
-//            System.out.println("persona = " + persona);
-//        }
-//        
-//        System.out.println("\n\n");
+        Connection conexion = null;
 
-        
-        // Modificar un registro de persona existente
-//        Persona personaModificar = new Persona(4, "kero", "kero",  "kero", "kero");
-//        Persona personaModificar2 = new Persona(5, "kero2", "kero2",  "kero2", "kero2");
-//        personaDAO.actualizar(personaModificar);
-//        personaDAO.actualizar(personaModificar2);
-        
-        // Imprimimos de nuevo, no hacemos método para ahorrar tiempo
-//        personas = personaDAO.seleccionar();
-//        for (Persona persona : personas) {
-//            System.out.println("persona = " + persona);
-//        }
-        
-        Persona personaEliminar = new Persona(5);
-        personaDAO.eliminar(personaEliminar);
-
-        personas = personaDAO.seleccionar();
-        for (Persona persona : personas) {
-            System.out.println("persona = " + persona);
+        try {
+            conexion = Conexion.getConnection();
+            if (conexion.getAutoCommit()) {
+                conexion.setAutoCommit(false);
+            }
+            
+            PersonaJDBC personaJDBC = new PersonaJDBC(conexion);
+            Persona cambioPersona = new Persona();
+            cambioPersona.setIdPersona(2);
+            cambioPersona.setNombre("Carla Alberta");
+            cambioPersona.setApellido("Mazueco");
+            cambioPersona.setEmail("carla@carla.es");
+            cambioPersona.setTelefono("2938424");
+            personaJDBC.actualizar(cambioPersona);
+            
+            
+            Persona nuevaPersona = new Persona();
+            nuevaPersona.setNombre("Carlos");
+            nuevaPersona.setApellido("Ramirez");
+            personaJDBC.insertar(nuevaPersona);
+            
+            cambioPersona.setIdPersona(6);
+            cambioPersona.setNombre("Carlos");
+            nuevaPersona.setApellido("Ramirez");
+            cambioPersona.setEmail("carlos@ramirez.es");
+            cambioPersona.setTelefono("324248424");
+            personaJDBC.actualizar(cambioPersona);
+            
+            conexion.commit();
+            System.out.println("Se ha hecho commit de la transacción");
+            
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+            System.out.println("Entramos al rollback");
+            try {
+                conexion.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
         }
         
     }

@@ -26,7 +26,7 @@ public class PersonaJDBC {
     
     
     
-    public List<Persona> seleccionar(){
+    public List<Persona> seleccionar() throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -46,8 +46,6 @@ public class PersonaJDBC {
                 persona = new Persona(idPersona, nombre, apellido, email, telefono);
                 personas.add(persona);
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
         }
         finally{
             try {
@@ -64,7 +62,7 @@ public class PersonaJDBC {
         return personas;
     }
     
-    public int insertar (Persona persona){
+    public int insertar (Persona persona) throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
@@ -77,10 +75,7 @@ public class PersonaJDBC {
             stmt.setString(4, persona.getTelefono());
             
             registros = stmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
         }
-        
         finally{
             try {
                 Conexion.close(stmt);
@@ -94,7 +89,7 @@ public class PersonaJDBC {
         return registros;
     }
     
-     public int actualizar (Persona persona){
+     public int actualizar (Persona persona) throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
@@ -108,10 +103,7 @@ public class PersonaJDBC {
             stmt.setInt(5, persona.getIdPersona());
             
             registros = stmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
         }
-        
         finally{
             try {
                 Conexion.close(stmt);
@@ -125,7 +117,7 @@ public class PersonaJDBC {
         return registros;
     }
     
-     public int eliminar (Persona persona){
+     public int eliminar (Persona persona) throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
@@ -133,11 +125,8 @@ public class PersonaJDBC {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
             stmt.setInt(1, persona.getIdPersona());
-            registros = stmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        }
-        
+            registros = stmt.executeUpdate();  
+        }      
         finally{
             try {
                 Conexion.close(stmt);

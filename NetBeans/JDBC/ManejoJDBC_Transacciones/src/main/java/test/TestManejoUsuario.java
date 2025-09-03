@@ -1,26 +1,49 @@
 package test;
 
+import datos.Conexion;
 import datos.UsuarioJDBC;
 import domain.Usuario;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class TestManejoUsuario {
     public static void main(String[] args) {
-        UsuarioJDBC usuarioDAO = new UsuarioJDBC();
-        
-        List<Usuario> usuarios = usuarioDAO.seleccionar();
-//        usuarios.forEach(usuario -> System.out.println("usuario = " + usuario));
-        
-//        Usuario usuarioInsertar = new Usuario("alba", "albitaa");
-//        usuarioDAO.insertar(usuarioInsertar);
-        
-//        Usuario usuarioActualizar = new Usuario(4, "ventura", "venturita");
-//        usuarioDAO.actualizar(usuarioActualizar);
-        
-        Usuario usuarioEliminar = new Usuario(4);
-        usuarioDAO.eliminar(usuarioEliminar);
+         Connection conexion = null;
 
-        usuarios = usuarioDAO.seleccionar();
-        usuarios.forEach(usuario -> System.out.println("usuario = " + usuario));
+        try {
+            conexion = Conexion.getConnection();
+            if (conexion.getAutoCommit()) {
+                conexion.setAutoCommit(false);
+            }
+            
+            UsuarioJDBC usuarioJDBC = new UsuarioJDBC(conexion);
+            Usuario cambioUsuario = new Usuario();
+            cambioUsuario.setIdUsuario(2);
+            cambioUsuario.setUsername("oscarfh");
+            cambioUsuario.setPassword("sfdfjda");
+            
+            usuarioJDBC.actualizar(cambioUsuario);
+            
+            
+            Usuario nuevoUsuario = new Usuario();
+            nuevoUsuario.setUsername("nuevouser");
+            nuevoUsuario.setPassword("fsdakñjlljkñfs");
+            usuarioJDBC.insertar(nuevoUsuario);
+            
+
+            
+            conexion.commit();
+            System.out.println("Se ha hecho commit de la transacción");
+            
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+            System.out.println("Entramos al rollback");
+            try {
+                conexion.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
     }
 }
