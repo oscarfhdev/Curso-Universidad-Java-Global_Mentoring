@@ -1,8 +1,9 @@
 /home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/datos/Conexion.java
-/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/datos/PersonaJDBC.java
+/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/datos/PersonaDao.java
+/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/datos/PersonaDaoJDBC.java
 /home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/datos/UsuarioJDBC.java
-/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/domain/Persona.java
-/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/domain/Usuario.java
+/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/domain/PersonaDTO.java
+/home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/domain/UsuarioDTO.java
 /home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/test/TestManejoPersonas.java
 /home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/test/TestManejoUsuario.java
 /home/oscarfh06/Documentos/OSCAR/CURSOS PROGRAMACION/Curso Universidad Java - Cero a Experto/NetBeans/JDBC/ManejoJDBC_Transacciones/src/main/java/test/TestMySqlJDBC.java

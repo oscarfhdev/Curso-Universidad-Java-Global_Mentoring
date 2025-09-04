@@ -1,6 +1,6 @@
 package datos;
 
-import domain.Persona;
+import domain.PersonaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonaJDBC {
+public class PersonaDaoJDBC implements PersonaDao{
     
     private Connection conexionTransaccional;
     private static final String SQL_SELECT = "SELECT id_persona, nombre, apellido, email, telefono FROM persona";
@@ -16,22 +16,22 @@ public class PersonaJDBC {
     private static final String SQL_UPDATE = "UPDATE persona SET nombre = ?, apellido = ?, email = ?, telefono = ? WHERE id_persona = ?";
     private static final String SQL_DELETE = "DELETE FROM persona WHERE id_persona = ?";
 
-    public PersonaJDBC() {
+    public PersonaDaoJDBC() {
     }
 
-    public PersonaJDBC(Connection conexionTransaccional) {
+    public PersonaDaoJDBC(Connection conexionTransaccional) {
         this.conexionTransaccional = conexionTransaccional;
     }
     
     
     
     
-    public List<Persona> seleccionar() throws SQLException{
+    public List<PersonaDTO> seleccionar() throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Persona persona = null;
-        List<Persona> personas = new ArrayList<>();
+        PersonaDTO persona = null;
+        List<PersonaDTO> personas = new ArrayList<>();
         
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
@@ -43,7 +43,7 @@ public class PersonaJDBC {
                 String apellido = rs.getString("apellido");
                 String email = rs.getString("email");
                 String telefono = rs.getString("telefono");
-                persona = new Persona(idPersona, nombre, apellido, email, telefono);
+                persona = new PersonaDTO(idPersona, nombre, apellido, email, telefono);
                 personas.add(persona);
             }
         }
@@ -62,7 +62,7 @@ public class PersonaJDBC {
         return personas;
     }
     
-    public int insertar (Persona persona) throws SQLException{
+    public int insertar (PersonaDTO persona) throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
@@ -89,7 +89,7 @@ public class PersonaJDBC {
         return registros;
     }
     
-     public int actualizar (Persona persona) throws SQLException{
+     public int actualizar (PersonaDTO persona) throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
@@ -117,7 +117,7 @@ public class PersonaJDBC {
         return registros;
     }
     
-     public int eliminar (Persona persona) throws SQLException{
+     public int eliminar (PersonaDTO persona) throws SQLException{
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;

@@ -1,24 +1,24 @@
 package domain;
 
-public class Usuario {
+public class UsuarioDTO {
     private int idUsuario;
     private String username;
     private String password;
 
-    public Usuario() {
+    public UsuarioDTO() {
     }
 
-    public Usuario(int idUsuario) {
+    public UsuarioDTO(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(int idUsuario, String username, String password) {
+    public UsuarioDTO(int idUsuario, String username, String password) {
         this.idUsuario = idUsuario;
         this.username = username;
         this.password = password;
     }
 
-    public Usuario(String username, String password) {
+    public UsuarioDTO(String username, String password) {
         this.username = username;
         this.password = password;
     }
