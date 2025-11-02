@@ -11,8 +11,8 @@
         <ul>
             <li><% out.println("Hola mundo con Scriptlets");%></li>
             <li>${"Hola Mundo con Expression Language (EL)"}</li>
-            <li><%= "Hola Mundo con Expresiones"%><li>
-            <li> <c:out value="Hola mundo con JSTL" /><li>
+            <li><%= "Hola Mundo con Expresiones"%></li>
+            <li> <c:out value="Hola mundo con JSTL" /></li>
         </ul>
     </body>
 </html>
