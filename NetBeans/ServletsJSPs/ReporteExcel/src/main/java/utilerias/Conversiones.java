@@ -9,5 +9,10 @@ public class Conversiones {
     public static String format(Date fecha){
         var formateador = new SimpleDateFormat(FORMATO_FECHA);
         return formateador.format(fecha);        
-     }
+    }
+    
+    public static String format(String fecha){
+        var formateador = new SimpleDateFormat(FORMATO_FECHA);
+        return formateador.format(fecha);        
+    }
 }
