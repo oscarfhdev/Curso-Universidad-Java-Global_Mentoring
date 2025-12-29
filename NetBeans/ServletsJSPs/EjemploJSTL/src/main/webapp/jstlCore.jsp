@@ -22,5 +22,34 @@
         </c:if>
         <br/>
         
+        <!--Estructura switch con c:choose-->
+        <c:if test="${param.opcion != null}">
+            <c:choose>
+                <c:when test="${param.opcion == 1}">
+                    Opción 1 seleccionada
+                </c:when>
+                <c:when test="${param.opcion == 2}">
+                    Opción 2 seleccionada
+                </c:when>    
+                <c:otherwise>
+                    Opción desconocida: ${param.opcion}
+                </c:otherwise>    
+            </c:choose>
+        </c:if>
+                    
+        <!--Iteración de un Arreglo-->
+        <% 
+            String[] nombres = {"Claudia", "Pedro", "Juan"};
+            request.setAttribute("nombres", nombres);
+        %>
+        <ul>
+            <c:forEach var="persona" items="${nombres}">
+                <li>${persona}</li>
+            </c:forEach>
+        </ul>
+        
+        <br/>
+        <a href="index.jsp">Regresar al inicio</a>
+        
     </body>
 </html>
